@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BhishiBook"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="भिशी व्यवस्थापन"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:paddingBottom="25dp" />
+
+        <Button
+            android:id="@+id/btnMembers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👥 Members"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnBhishi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💰 भिशीचा हिशोब"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnAuction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔨 लिलाव"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnPayments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📅 हप्ते / Payments"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📜 History"
+            android:layout_marginBottom="12dp" />
+
+    </LinearLayout>
+
+</ScrollView>
