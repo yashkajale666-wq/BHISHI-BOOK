@@ -17,43 +17,21 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Extract project
-        run: |
-          mkdir -p project
-          unzip -q BhishiBook_full_source.zip -d project
-
-      - name: Find Android project
-        run: |
-          echo "Searching for Gradle project..."
-          find project -maxdepth 6 -type f \( -name "settings.gradle" -o -name "settings.gradle.kts" \) -print
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
 
       - name: Build APK
         run: |
-          ROOT=$(find project -maxdepth 6 -type f \( -name "settings.gradle" -o -name "settings.gradle.kts" \) -print -quit | xargs -r dirname)
-
-          if [ -z "$ROOT" ]; then
-            echo "ERROR: Android Gradle project not found!"
-            find project -maxdepth 6 -type f | head -100
-            exit 1
-          fi
-
-          echo "Android project found at: $ROOT"
-          cd "$ROOT"
-
-          if [ -f "./gradlew" ]; then
-            chmod +x ./gradlew
-            ./gradlew assembleDebug --no-daemon
-          else
-            gradle assembleDebug --no-daemon
-          fi
+          gradle assembleDebug --no-daemon
 
       - name: Find APK
         run: |
-          echo "Searching for APK..."
-          find project -type f -name "*.apk" -print
+          find . -type f -name "*.apk" -print
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: BhishiBook-APK
-          path: project/**/*.apk
+          path: app/build/outputs/apk/debug/*.apk
